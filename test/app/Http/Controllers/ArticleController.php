@@ -89,4 +89,10 @@ class ArticleController extends Controller
     {
         //
     }
+
+    public function like($id)
+    {
+        $message = '' . auth()->user()->name . ' liked your article.';
+        return $message;
+    }
 }

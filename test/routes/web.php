@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/articles', App\Http\Controllers\ArticleController::class);
+Route::resource('/articles', ArticleController::class);
+
+Route::post('/articles/{id}/like', [ArticleController::class, 'like'])->name('articles.like');

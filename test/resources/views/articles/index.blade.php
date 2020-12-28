@@ -7,7 +7,12 @@
 				@foreach($articles as $article)
 					<ul class="pl-0" style="list-style-type: none;">
 						<li>
-							<a href="#">{{ $article->title }}</a>
+							<a href="javascript:void(0)">
+								<h4>{{ $article->title }}</h4>
+							</a>
+							<br>
+							<a href="javascript:void(0)" class="like-article" data-id="{{ $article->id }}" data-href="{{ route('articles.like', ['id' => $article->id]) }}">Like</a>
+							<a href="javascript:void(0)">Comment</a>
 						</li>
 					</ul>
 				@endforeach

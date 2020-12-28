@@ -27,6 +27,8 @@
 
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -61,6 +63,19 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item dropdown dropdown-notifications">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Notification<span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right menu-notification" aria-labelledby="navbarDropdown">
+                                    @foreach (Auth::user()->notifications as $notification)
+                                        <a class="dropdown-item" href="#">
+                                            <span>{{ $notification->data['title'] }}</span><br>
+                                            <small>{{ $notification->data['title'] }}</small>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -88,5 +103,7 @@
             @yield('content')
         </main>
     </div>
+
+    <script type="text/javascript" src="{{ asset('js/Reaction.js') }}"></script>
 </body>
 </html>
