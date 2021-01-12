@@ -31,10 +31,22 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  }, 
+  mounted() {
+    this.loadUsers();
+  },
+  methods: {
+    loadUsers() {
+      axios.get("localhost:8000/api/users")
+      .then((res) => {
+        console.log(res);
+      })
+    }
   }
 }
 </script>
